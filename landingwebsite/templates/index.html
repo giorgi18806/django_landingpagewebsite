@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Index Title{% endblock %}
+
+{% load static %}
+
+{% block content %}
+    <img src="{% static 'img\1.jpg' %}" alt="">
+    {% include 'index_old.html' %}
+{% endblock %}
