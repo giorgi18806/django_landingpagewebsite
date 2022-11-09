@@ -19,21 +19,13 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <td>Услуга 1 Услуга 1 Услуга 1</td>
-			      <td><del>2000</del></td>
-			      <td>1000</td>
-			    </tr>
-			    <tr>
-			      <td>Услуга 2 Услуга 2 Услуга 2</td>
-			      <td><del>2000</del></td>
-			      <td>1000</td>
-			    </tr>
-			    <tr>
-			      <td>Услуга 3 Услуга 3 Услуга 3</td>
-			      <td><del>2000</del></td>
-			      <td>1000</td>
-			    </tr>
+			    {% for obj in price_table %}
+			    	<tr>
+					  <td>{{ obj.pt_title}}</td>
+					  <td><del>{{ obj.pt_old_price}}</del></td>
+					  <td>{{ obj.pt_new_price}}</td>
+					</tr>
+			    {% endfor %}
 			  </tbody>
 			</table>
   		</div>
@@ -43,16 +35,17 @@
   		<div class="container class_form">
   			<h1 class="text-3">Оставь заявку и получи услугу</h1>
   			<div class="row justify-content-center">
-  			<form action="" method="" style="width: 50%;">
+  			<form action="{% url 'thanks' %}" method="POST" style="width: 50%;">
+				{% csrf_token %}
 			  <div class="form-group row">
 			    <label for="inputEmail3" class="col-sm-2 col-form-label">Имя</label><br>
-			      <input type="text" class="form-control" name="name">
+				  {{ form.name }}
 			    <div class="">
 			    </div>
 			  </div>
 			  <div class="form-group row">
 			    <label for="inputEmail3" class="col-sm-2 col-form-label">Телефон</label><br>
-			      <input type="text" class="form-control" name="phone">
+				  {{ form.phone }}
 			    <div class="">
 			    </div>
 			  </div>
